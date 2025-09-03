@@ -1,7 +1,7 @@
 import React from 'react'
 import { Box, Paper, Stack } from '@mui/material';
 import Filters from './FilterComponents/Filters';
-function FilterBox({category,onCategoryChange}) {
+function FilterBox({category,onCategoryChange,SetSelectname}) {
     return (
         <>
             <Paper elevation={3} sx={{
@@ -15,7 +15,7 @@ function FilterBox({category,onCategoryChange}) {
                         alignItems: "center"
                     }}
                 >
-                    <Stack>  <Filters category={category} onCategoryChange={onCategoryChange}/></Stack>
+                    <Stack>  <Filters category={category} onCategoryChange={onCategoryChange} SetSelectname={SetSelectname}/></Stack>
 
                 </Box>
             </Paper>

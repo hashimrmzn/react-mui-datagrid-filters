@@ -8,9 +8,7 @@
 body {
     background-color: #f3f3f3;
 }
- .MuiDataGrid-columnHeaders {
-    background-color: #fff !important;
-}
+
 .MuiDataGrid-row--borderBottom.css-yseucu-MuiDataGrid-columnHeaderRow {
     justify-content: space-between;
     border-top: 1px solid #000;

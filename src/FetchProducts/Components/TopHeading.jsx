@@ -12,7 +12,7 @@ function TopHeading() {
                 mt={3}
                 fontSize="24px"
                 >
-                    Beauty Products
+                    Our Products
                 </Typography>
             </Box>
         </>

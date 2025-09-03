@@ -21,7 +21,7 @@ const columns = [
             />
         ),
     },
-    { field: 'title', headerName: 'Product Title', flex: 4, minWidth: 150, sortable: false },
+    { field: 'title', headerName: 'Name', flex: 4, minWidth: 150, sortable: false },
     {
         field: 'price', headerName: 'Price', flex: 2, minWidth: 150, sortable: false,
         renderCell: (params) => (
@@ -47,16 +47,17 @@ const columns = [
 ];
 function ShowProducts() {
     const [selectedCategory, setSelectedCategory] = useState('');
+    const [selectname,SetSelectname]=useState('');
     const allproducts=useAllData();
-    const products = useProducts(selectedCategory); 
+    const products = useProducts(selectedCategory,selectname); 
     const category = [...new Set(allproducts.map((p) => p.category))];
-
+  console.log(`this is name of product ${selectname}`);
     return (
         <>
             <Box
                 mb={5}
             >
-                <FilterBox category={category} onCategoryChange={setSelectedCategory} />
+                <FilterBox category={category} onCategoryChange={setSelectedCategory} SetSelectname={SetSelectname} />
             </Box>
             <Paper
 
@@ -71,7 +72,6 @@ function ShowProducts() {
                         height: "400px",
 
                         '& .MuiDataGrid-columnHeaders': {
-                            backgroundColor: '#1976d2',
                             color: '#000',
                             fontSize: 16,
                         },
