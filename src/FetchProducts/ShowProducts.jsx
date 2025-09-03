@@ -68,7 +68,7 @@ function ShowProducts() {
                     pageSize={5}
                     disableColumnSorting
                     sx={{
-                        height: "500px",
+                        height: "400px",
 
                         '& .MuiDataGrid-columnHeaders': {
                             backgroundColor: '#1976d2',
