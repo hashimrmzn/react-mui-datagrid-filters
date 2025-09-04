@@ -47,11 +47,10 @@ const columns = [
 ];
 function ShowProducts() {
     const [selectedCategory, setSelectedCategory] = useState('');
-    const [selectname,SetSelectname]=useState('');
-    const allproducts=useAllData();
-    const products = useProducts(selectedCategory,selectname); 
-    const category = [...new Set(allproducts.map((p) => p.category))];
-  console.log(`this is name of product ${selectname}`);
+    const [selectname, SetSelectname] = useState('');
+    const allproducts = useAllData();
+    const products = useProducts(selectedCategory, selectname);
+    const category = [...new Set(allproducts.map((p) => p.category))];;
     return (
         <>
             <Box
@@ -59,10 +58,16 @@ function ShowProducts() {
             >
                 <FilterBox category={category} onCategoryChange={setSelectedCategory} SetSelectname={SetSelectname} />
             </Box>
+        
             <Paper
 
                 style={{ width: '100%', overflowX: "auto" }}>
                 <TopHeading />
+                    {products.length === 0 ? (
+                <div style={{ textAlign: "center", padding: "20px", fontSize: "18px" }}>
+                     Loading products, please wait...
+                </div>
+            ):( 
                 <DataGrid
                     rows={products}
                     columns={columns}
@@ -96,6 +101,7 @@ function ShowProducts() {
                         },
                     }}
                 />
+                )};
             </Paper>
         </>
     );

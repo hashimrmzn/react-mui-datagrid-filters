@@ -20,18 +20,7 @@ function Filters({ category, onCategoryChange, SetSelectname }) {
                 onChange={(e) => onTempchange(e.target.value)}
             />
           
-                  
-    
-            
-            {/* my Price Filter */}
-            <FormControl size="small" sx={{ minWidth: 150 }}>
-                <InputLabel id="price-filter-label">Sort by Price</InputLabel>
-                <Select defaultValue="">
-                    <MenuItem value="">None</MenuItem>
-                    <MenuItem value="low-high">Low → High</MenuItem>
-                    <MenuItem value="high-low">High → Low</MenuItem>
-                </Select>
-            </FormControl>
+                
 
             {/* my Brand Filter */}
             <FormControl size="small" sx={{ minWidth: 150 }}>

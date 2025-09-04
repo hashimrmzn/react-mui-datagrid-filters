@@ -1,31 +1,24 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 
-export default function UseAllData() {
-  const [AllCategories,setAllCategories]=useState([]);
+export default function useAllData() {
+  const [allCategories, setAllCategories] = useState([]);
 
   useEffect(() => {
-    let url = 'https://dummyjson.com/products'; 
+    const fetchData = async () => {
+      try {
+        const url = "https://dummyjson.com/products";
+        const res = await fetch(url);
+        const data = await res.json();
 
-    fetch(url)
-      .then(res => res.json())
-      .then(data => {
-        setAllCategories(data.products)
-        console.log(data)
-        })
-    
-      .catch(err => console.error(err));
+        setAllCategories(data.products || []);
+        console.log("Fetched data:", data);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchData();
   }, []);
 
-  return AllCategories;
-}
-
-
-export function ProductTable() {
-
-  return (
-    <div>
-      <h3>Products</h3>
-
-    </div>
-  );
+  return allCategories;
 }
