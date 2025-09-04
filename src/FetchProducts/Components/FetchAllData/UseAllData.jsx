@@ -11,7 +11,6 @@ export default function useAllData() {
         const data = await res.json();
 
         setAllCategories(data.products || []);
-        console.log("Fetched data:", data);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
