@@ -1,12 +1,13 @@
 import './App.css'
-import ShowProducts from './FetchProducts/ShowProducts'
+import ShowProducts from './components/ShowProducts'
+
+
 
 function App() {
 
   return (
     <>
-  <ShowProducts />
-      
+    <ShowProducts />
     </>
   )
 }

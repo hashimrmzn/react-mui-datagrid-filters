@@ -1,9 +1,9 @@
 import { DataGrid } from '@mui/x-data-grid';
-import useProducts from './UseProducts';
-import useAllData from './Components/FetchAllData/UseAllData';
+import useProducts from '../services/UseProducts';
+import useAllData from '../services/UseAllData';
 import { Box, Paper } from '@mui/material';
-import TopHeading from './Components/TopHeading';
-import FilterBox from './Components/FilterBox';
+import TopHeading from './TopHeading';
+import FilterBox from './FilterBox';
 import { useState } from 'react';
 
 
