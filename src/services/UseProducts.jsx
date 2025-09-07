@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-
+import axios from "axios";
 export default function useProducts(selectedCategory, selectname) {
   const [products, setProducts] = useState([]);
 
@@ -14,10 +14,10 @@ export default function useProducts(selectedCategory, selectname) {
           url = `https://dummyjson.com/products/search?q=${selectname}`;
         }
 
-        const res = await fetch(url);
-        const data = await res.json();
+        const res = await axios(url);
 
-        setProducts(data.products || []);
+
+        setProducts(res.data.products || []);
       } catch (error) {
         console.error("Error fetching products:", error);
       }

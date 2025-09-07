@@ -11,7 +11,7 @@ function Filters({ category, onCategoryChange, SetSelectname }) {
   
     return (
         <Stack direction="row" spacing={3} justifyContent="space-between" alignItems="center">
-            {/* my Name Filter */}
+    
             <TextField
                 label="Search by Name"
                 size="small"
@@ -22,7 +22,7 @@ function Filters({ category, onCategoryChange, SetSelectname }) {
           
                 
 
-            {/* my Brand Filter */}
+         
             <FormControl size="small" sx={{ minWidth: 150 }}>
                 <InputLabel id="brand-filter-label">Category</InputLabel>
                 <Select labelId="brand-filter-label" defaultValue=""
@@ -37,7 +37,6 @@ function Filters({ category, onCategoryChange, SetSelectname }) {
                 </Select>
             </FormControl>
 
-            {/* here our run button */}
             <Button
               onClick={handleRunReport}
                 sx={{
