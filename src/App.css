@@ -4,6 +4,7 @@
   margin: 0 auto;
   padding: .5rem 2rem;
   text-align: center;
+
 }
 body {
     background-color: #f3f3f3;
@@ -13,4 +14,12 @@ body {
     justify-content: space-between;
     border-top: 1px solid #000;
     border-bottom: 1px solid #000;
+}
+
+.MuiDataGrid-cell:focus {
+    outline: none !important;
+}
+
+.Mui-focused {
+    color: #000 !important;
 }
