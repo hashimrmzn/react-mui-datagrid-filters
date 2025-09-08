@@ -81,7 +81,7 @@ function Filters({ category, onCategoryChange, SetSelectname, setTempCategory, o
                         "&:hover": {
                             outline: "none",
                             boxShadow: "none",
-                            backgroundColor: "#000",
+                            backgroundColor: "#e50a0a",
                             transform: "scale(1.05)",
                         },
                     }}
