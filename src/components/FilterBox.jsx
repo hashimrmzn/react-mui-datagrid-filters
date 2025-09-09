@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import { Box, Paper, Stack, useMediaQuery, useTheme } from "@mui/material";
 import Filters from "./FilterComponents/Filters";
 import RunReport from "./RunReport/RunRport";
+import PdfGenerator from "../pdfGenerator";
 
-function FilterBox({ category }) {
+function FilterBox({ category,products }) {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
@@ -24,7 +25,7 @@ function FilterBox({ category }) {
         justifyContent="space-between"
         alignItems={isMobile ? "stretch" : "center"}
       >
-    
+
         <Filters
           category={category}
           tempCategory={tempCategory}
@@ -33,13 +34,20 @@ function FilterBox({ category }) {
           setTempname={setTempname}
         />
 
-      
+
         <Stack
           direction={isMobile ? "column" : "row"}
           spacing={isMobile ? 2 : 2}
           sx={{ maxWidth: isMobile ? "100%" : "auto" }}
+          justifyContent="center"
+          alignItems="center"
         >
-          <RunReport tempCategory={tempCategory} tempname={tempname} />
+          <div>
+            <PdfGenerator products={products}/>
+          </div>
+          <div>
+            <RunReport tempCategory={tempCategory} tempname={tempname} />
+          </div>
         </Stack>
       </Stack>
     </Paper>

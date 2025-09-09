@@ -26,7 +26,7 @@ function Filters({ category, tempCategory, setTempCategory, tempname, setTempnam
       alignItems={isMobile ? "stretch" : "center"}
   
     >
-      {/* Local state only */}
+
       <TextField
         label="Search by Name"
         size="small"
@@ -67,7 +67,7 @@ function Filters({ category, tempCategory, setTempCategory, tempname, setTempnam
         </Select>
       </FormControl>
 
-      {/* Reset button clears both local + Redux */}
+
       <Button
         onClick={() => {
           setTempCategory("");

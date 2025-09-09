@@ -4,10 +4,13 @@ import { DataGrid } from "@mui/x-data-grid";
 import { Box, Paper, CircularProgress, Typography } from "@mui/material";
 import TopHeading from "./TopHeading";
 import FilterBox from "./FilterBox";
+
 import {
   fetchAllProducts,
   fetchFilteredProducts,
 } from "../app/features/products/productsThunks";
+
+
 
 const columns = [
   { field: "id", headerName: "ID", flex: 1, minWidth: 70 },
@@ -33,7 +36,7 @@ const columns = [
     field: "price",
     headerName: "Price",
     flex: 2,
-     minWidth: 70,
+    minWidth: 70,
     renderCell: (params) => (
       <div
         style={{
@@ -78,9 +81,10 @@ const columns = [
       );
     },
   },
-  { field: "brand", headerName: "Brand", flex: 2,
+  {
+    field: "brand", headerName: "Brand", flex: 2,
     minWidth: 90,
-   },
+  },
   {
     field: "discountPercentage",
     headerName: "Discount %",
@@ -113,12 +117,12 @@ function ShowProducts() {
   return (
     <>
       <Box mb={5}>
-        <FilterBox category={allCategories} />
+        <FilterBox category={allCategories} products={products} />
       </Box>
 
       <Paper style={{ overflowX: "auto" }}>
         <TopHeading />
-
+       
         {status === "loading" ? (
           <div
             style={{
@@ -145,11 +149,11 @@ function ShowProducts() {
             columns={columns}
             pageSize={5}
             getRowId={(row) => row.id}
-            disableColumnSorting     
-            disableColumnMenu         
+            disableColumnSorting
+            disableColumnMenu
             sx={{
               minHeight: "400px !important",
-              width:"100%",
+              width: "100%",
               maxHeight: "400px !important",
               "& .MuiDataGrid-columnHeaders": {
                 color: "#000",
