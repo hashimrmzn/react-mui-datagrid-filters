@@ -100,7 +100,7 @@ function ShowProducts() {
     });
   }, [dispatch]);
 
- 
+
   useEffect(() => {
     dispatch(fetchFilteredProducts({ category, query: searchName }));
   }, [dispatch, category, searchName]);
@@ -140,7 +140,8 @@ function ShowProducts() {
             columns={columns}
             pageSize={5}
             getRowId={(row) => row.id}
-            disableColumnSorting
+            disableColumnSorting     
+            disableColumnMenu         
             sx={{
               minHeight: "400px !important",
               maxHeight: "400px !important",
