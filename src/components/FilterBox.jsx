@@ -15,7 +15,7 @@ function FilterBox({ category }) {
       elevation={3}
       sx={{
         p: 2,
-        width: "100%",
+
       }}
     >
       <Stack
@@ -37,7 +37,7 @@ function FilterBox({ category }) {
         <Stack
           direction={isMobile ? "column" : "row"}
           spacing={isMobile ? 2 : 2}
-          sx={{ minWidth: isMobile ? "100%" : "auto" }}
+          sx={{ maxWidth: isMobile ? "100%" : "auto" }}
         >
           <RunReport tempCategory={tempCategory} tempname={tempname} />
         </Stack>

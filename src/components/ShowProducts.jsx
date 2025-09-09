@@ -33,6 +33,7 @@ const columns = [
     field: "price",
     headerName: "Price",
     flex: 2,
+     minWidth: 70,
     renderCell: (params) => (
       <div
         style={{
@@ -52,6 +53,7 @@ const columns = [
     field: "availabilityStatus",
     headerName: "Availability",
     flex: 2,
+    minWidth: 90,
     renderCell: (params) => {
       const value = params.value?.toLowerCase();
       let bgColor = "#9e9e9e";
@@ -76,11 +78,14 @@ const columns = [
       );
     },
   },
-  { field: "brand", headerName: "Brand", flex: 2 },
+  { field: "brand", headerName: "Brand", flex: 2,
+    minWidth: 90,
+   },
   {
     field: "discountPercentage",
     headerName: "Discount %",
     flex: 2,
+    minWidth: 90,
   },
 ];
 
@@ -111,7 +116,7 @@ function ShowProducts() {
         <FilterBox category={allCategories} />
       </Box>
 
-      <Paper style={{ width: "100%", overflowX: "auto" }}>
+      <Paper style={{ overflowX: "auto" }}>
         <TopHeading />
 
         {status === "loading" ? (
@@ -144,6 +149,7 @@ function ShowProducts() {
             disableColumnMenu         
             sx={{
               minHeight: "400px !important",
+              width:"100%",
               maxHeight: "400px !important",
               "& .MuiDataGrid-columnHeaders": {
                 color: "#000",
