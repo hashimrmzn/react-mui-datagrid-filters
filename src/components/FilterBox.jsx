@@ -1,16 +1,17 @@
 import React, { useState } from "react";
-import { Box, Paper, Stack, useMediaQuery, useTheme } from "@mui/material";
+import RestartAltIcon from "@mui/icons-material/RestartAlt";
+import { Button, Paper, Stack, useMediaQuery, useTheme } from "@mui/material";
 import Filters from "./FilterComponents/Filters";
-import RunReport from "./RunReport/RunRport";
 import PdfGenerator from "../pdfGenerator";
-
-function FilterBox({ category,products }) {
+import { useDispatch } from "react-redux";
+import { resetFilters } from "../app/features/filters/filtersSlice";
+function FilterBox({ category, products }) {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
   const [tempCategory, setTempCategory] = useState("");
   const [tempname, setTempname] = useState("");
-
+  const dispatch = useDispatch();
   return (
     <Paper
       elevation={3}
@@ -43,10 +44,39 @@ function FilterBox({ category,products }) {
           alignItems="center"
         >
           <div>
-            <PdfGenerator products={products}/>
+            <PdfGenerator products={products} />
           </div>
           <div>
-            <RunReport tempCategory={tempCategory} tempname={tempname} />
+            <Button
+              onClick={() => {
+                setTempCategory("");
+                setTempname("");
+                dispatch(resetFilters());
+              }}
+              disableRipple
+              fullWidth={isMobile}
+              sx={{
+                backgroundColor: "#e50a0a",
+                color: "#fff",
+                textTransform: "none",
+                px: 3,
+                py: 1.2,
+                borderRadius: "8px",
+                transition: "all 0.3s ease-in-out",
+                "&:focus": { outline: "none", boxShadow: "none" },
+                "&:active": { outline: "none", boxShadow: "none" },
+                "&:hover": {
+                  outline: "none",
+                  boxShadow: "none",
+                  backgroundColor: "#c70808",
+                  transform: "scale(1.05)",
+                },
+              }}
+              startIcon={<RestartAltIcon />}
+              variant="contained"
+            >
+              Reset
+            </Button>
           </div>
         </Stack>
       </Stack>
