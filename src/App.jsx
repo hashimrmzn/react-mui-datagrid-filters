@@ -1,5 +1,8 @@
 import './App.css'
-import ShowProducts from './components/ShowProducts'
+import { HashRouter, Routes, Route } from "react-router-dom";
+import ProductsPage from "./pages/ProductsPage";
+import LoginPage from "./pages/LoginPage";
+import NotFound from "./pages/NotFound";
 
 
 
@@ -7,7 +10,16 @@ function App() {
 
   return (
     <>
-    <ShowProducts />
+    
+     <HashRouter>
+      <Routes>
+      
+        <Route path="/" element={<ProductsPage />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </HashRouter>
+
     </>
   )
 }

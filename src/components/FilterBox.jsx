@@ -3,12 +3,14 @@ import RestartAltIcon from "@mui/icons-material/RestartAlt";
 import { Button, Paper, Stack, useMediaQuery, useTheme } from "@mui/material";
 import Filters from "./FilterComponents/Filters";
 import PdfGenerator from "../pdfGenerator";
-import { useDispatch } from "react-redux";
+import { useDispatch,useSelector } from "react-redux";
 import { resetFilters } from "../app/features/filters/filtersSlice";
+import LoginButton from "./loginButton/LoginButton";
+import LogoutButton from "./LogoutButton/LogoutButton";
 function FilterBox({ category, products }) {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
-
+  const { isAuthenticated } = useSelector((state) => state.auth);
   const [tempCategory, setTempCategory] = useState("");
   const [tempname, setTempname] = useState("");
   const dispatch = useDispatch();
@@ -77,6 +79,11 @@ function FilterBox({ category, products }) {
             >
               Reset
             </Button>
+          </div>
+          <div>
+            {isAuthenticated? <LogoutButton /> : <LoginButton />}
+            
+           
           </div>
         </Stack>
       </Stack>

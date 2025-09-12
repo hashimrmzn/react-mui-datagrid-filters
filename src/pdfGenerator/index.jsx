@@ -21,7 +21,10 @@ export default function PdfGenerator({ products = [], fileName = "products.pdf" 
       const pageWidth = doc.internal.pageSize.getWidth();
 
       doc.setFontSize(14);
-      doc.text("Products Export", pageWidth / 2, 30, { align: "center" });
+      doc.setFont("helvetica", "bold");
+      doc.text("Connect Solution", pageWidth / 2, 40, { align: "center" })
+      doc.setFont("helvetica", "normal");
+      doc.text("Products List", pageWidth / 2, 60, { align: "center" });
 
       const head = [
         ["ID", "Name", "Price", "Description", "Availability", "Brand", "Discount %"],
@@ -38,12 +41,33 @@ export default function PdfGenerator({ products = [], fileName = "products.pdf" 
       ]);
 
       autoTable(doc, {
-        startY: 50,
+        startY: 80,
         head,
         body,
         styles: { fontSize: 9, cellPadding: 6, overflow: "linebreak" },
         margin: { top: 60, left: 20, right: 20, bottom: 40 },
+        didDrawPage: (data) => {
+          const pageSize = doc.internal.pageSize;
+          const pageHeight = pageSize.getHeight();
+          const pageWidth = pageSize.getWidth();
+
+          const pageNumber = doc.internal.getCurrentPageInfo().pageNumber;
+          const totalPagesExp = "{total_pages_count_string}";
+
+          doc.setFontSize(10);
+          doc.text(
+            `${pageNumber} / ${totalPagesExp}`,
+            pageWidth - 40,
+            pageHeight - 20
+          );
+        },
       });
+
+
+      if (typeof doc.putTotalPages === "function") {
+        doc.putTotalPages("{total_pages_count_string}");
+      }
+
 
       doc.save(fileName);
     } catch (err) {
