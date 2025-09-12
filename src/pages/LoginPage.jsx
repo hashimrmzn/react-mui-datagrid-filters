@@ -46,6 +46,9 @@ export default function LoginPage() {
               {loading ? <CircularProgress size={24} /> : "Login"}
             </Button>
           </Box>
+          <Typography mt={3}>
+            Hint(usenername: emilys and Password: emilyspass) 
+          </Typography>
         </CardContent>
       </Card>
     </Container>
