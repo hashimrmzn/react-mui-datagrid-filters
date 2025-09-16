@@ -1,10 +1,8 @@
-export const FetchUser = async (accessToken) => {
-  const res = await fetch('https://dummyjson.com/auth/me', {
-    method: 'GET',
-    headers: {
-      Authorization: `Bearer ${accessToken}`,
-    },
- 
+import { fetchWithAuth } from "./fetchWithAuth";
+
+export const FetchUser = async () => {
+  const res = await fetchWithAuth("https://dummyjson.com/auth/me", {
+    method: "GET",
   });
 
   if (!res.ok) {

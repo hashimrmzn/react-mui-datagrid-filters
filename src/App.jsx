@@ -17,8 +17,9 @@ function App() {
       
         <Route path="/" element={<ProductsPage />} />
         <Route path="/login" element={<LoginPage />} />
-        <Route path="*" element={<NotFound />} />
         <Route path = "/profile" element ={<Profile />} />
+        <Route path="*" element={<NotFound />} />
+      
       </Routes>
     </HashRouter>
 
