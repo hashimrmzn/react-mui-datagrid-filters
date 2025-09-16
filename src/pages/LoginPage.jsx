@@ -8,12 +8,12 @@ export default function LoginPage() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
-  const { isAuthenticated, loading, error } = useSelector((state) => state.auth);
+  const { isAuthenticated, loading, error,accessToken } = useSelector((state) => state.auth);
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(loginUser({ username, password }));
   };
-
+console.log(`this is access token ${accessToken}`);
   if (isAuthenticated) {
     return <Navigate to="/" replace />;
   }

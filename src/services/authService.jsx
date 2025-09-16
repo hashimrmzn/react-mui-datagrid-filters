@@ -10,7 +10,7 @@ export const login = async (username, password) => {
   }
 
   const data = await res.json();
-
+console.log(data);
   return {
     user: {
       id: data.id,
