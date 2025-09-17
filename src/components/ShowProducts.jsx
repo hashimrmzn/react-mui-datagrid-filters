@@ -4,11 +4,11 @@ import { DataGrid } from "@mui/x-data-grid";
 import { Box, Paper, CircularProgress, Typography } from "@mui/material";
 import TopHeading from "./TopHeading";
 import FilterBox from "./FilterBox";
-
 import {
   fetchAllProducts,
   fetchFilteredProducts,
 } from "../app/features/products/productsThunks";
+import EditButton from "./EditButton/EditButton";
 
 
 
@@ -94,12 +94,12 @@ const columns = [
 ];
 
 function ShowProducts() {
+  const { isAuthenticated } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const { products, status, error } = useSelector((state) => state.products);
   const { category, searchName } = useSelector((state) => state.filters);
   const [allCategories, setAllCategories] = useState([]);
-
-
+  const [selectedRows, setSelectedRows] = useState([]);
   useEffect(() => {
     dispatch(fetchAllProducts()).then((res) => {
       if (res.payload) {
@@ -122,7 +122,7 @@ function ShowProducts() {
 
       <Paper style={{ overflowX: "auto" }}>
         <TopHeading />
-       
+
         {status === "loading" ? (
           <div
             style={{
@@ -143,32 +143,46 @@ function ShowProducts() {
             <Typography variant="body1">Error: {error}</Typography>
           </div>
         ) : (
-          <DataGrid
-            className="data-table"
-            rows={products}
-            columns={columns}
-            pageSize={5}
-            getRowId={(row) => row.id}
-            disableColumnSorting
-            disableColumnMenu
-            sx={{
-              minHeight: "400px !important",
-              width: "100%",
-              maxHeight: "400px !important",
-              "& .MuiDataGrid-columnHeaders": {
-                color: "#000",
-                fontSize: 16,
-                height: "45px",
-              },
-              "& .MuiDataGrid-columnHeaderTitle": {
-                fontWeight: "bold",
-                fontSize: "16px",
-              },
-              "& .MuiDataGrid-row:hover": {
-                backgroundColor: "#f3f1f1ff",
-              },
-            }}
-          />
+          <>
+            <div>
+              {isAuthenticated && selectedRows.length > 0 && (
+                <Box mb={2}>
+                  <EditButton />
+                </Box>
+              )}
+            </div>
+            <DataGrid
+              className="data-table"
+              rows={products}
+              columns={columns}
+              pageSize={5}
+              getRowId={(row) => row.id}
+              disableColumnSorting
+              disableColumnMenu
+              checkboxSelection={isAuthenticated}
+              onRowSelectionModelChange={(newSelection) => {
+                const idsArray = Array.from(newSelection.ids);
+                setSelectedRows(idsArray);
+              }}
+              sx={{
+                minHeight: "400px !important",
+                width: "100%",
+                maxHeight: "400px !important",
+                "& .MuiDataGrid-columnHeaders": {
+                  color: "#000",
+                  fontSize: 16,
+                  height: "45px",
+                },
+                "& .MuiDataGrid-columnHeaderTitle": {
+                  fontWeight: "bold",
+                  fontSize: "16px",
+                },
+                "& .MuiDataGrid-row:hover": {
+                  backgroundColor: "#f3f1f1ff",
+                },
+              }}
+            />
+          </>
         )}
       </Paper>
     </>

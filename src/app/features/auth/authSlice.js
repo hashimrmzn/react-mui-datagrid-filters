@@ -20,6 +20,16 @@ const authSlice = createSlice({
       state.accessToken = action.payload.accessToken;
       state.refreshToken = action.payload.refreshToken;
     },
+    setProducts:(state,action)=>{
+      state.items=action.payload;
+    },
+    updateItem:(state,action)=>{
+    const updated= action.payload;
+    const index=state.items.findIndex(p => p.id === updated.id);
+    if(index !== -1){
+      state[index]=updated;
+    }
+    },
     logout: (state) => {
       state.user = null;
       state.accessToken = null;
@@ -28,6 +38,7 @@ const authSlice = createSlice({
       state.error = null;
       clearAuthFromLocalStorage();
     },
+
   },
   extraReducers: (builder) => {
     builder
