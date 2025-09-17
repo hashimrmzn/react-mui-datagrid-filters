@@ -10,7 +10,7 @@ import {
 } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 
-function EditForm({ showForm, onClose, product = {}, onSave }) {
+function EditForm({ showForm, onClose,  onSave }) {
   const [formData, setFormData] = useState({
     title: "",
     price: "",
@@ -19,23 +19,6 @@ function EditForm({ showForm, onClose, product = {}, onSave }) {
   const [errors, setErrors] = useState({});
  
 
-  // Initialize local state when drawer opens or product changes
-  useEffect(() => {
-    if (showForm) {
-      setFormData({
-        title: product?.title ?? "",
-        price:
-          product?.price !== undefined && product?.price !== null
-            ? String(product.price)
-            : "",
-        description: product?.description ?? "",
-      });
-      setErrors({});
-
-    
-     
-    }
-  }, [product, showForm]);
 
   const validate = (data) => {
     const e = {};
