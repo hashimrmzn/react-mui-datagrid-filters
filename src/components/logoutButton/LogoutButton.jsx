@@ -9,7 +9,21 @@ const dispatch = useDispatch();
      dispatch(logout());
     }
     return (
-        <Button variant="contained" color="primary" onClick={onlogout}>
+        <Button  sx={{
+    outline: "none",
+    border: "none",
+    boxShadow: "none",
+    "&:focus": {
+      outline: "none",
+      border: "none",
+      boxShadow: "none",
+    },
+    "&:active": {
+      outline: "none",
+      border: "none",
+      boxShadow: "none",
+    }
+  }} variant="contained" color="primary" onClick={onlogout}>
             Logout
         </Button>
     )

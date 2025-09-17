@@ -1,28 +1,53 @@
-import React from "react";
+import React, { useState } from "react";
 import { Button } from "@mui/material";
 import EditIcon from "@mui/icons-material/Edit";
+import EditForm from "../EditForm/EditForm";
 
-function EditButton() {
+function EditButton({ product }) {
+  const [showForm, setShowForm] = useState(false);
+
+  const handleClick = () => {
+    setShowForm(true);
+  };
+
   return (
-    <Button
-      variant="contained"
-      color="primary"
-      startIcon={<EditIcon />}
-      sx={{
-        textTransform: "none",
-        borderRadius: 2,
-        fontWeight: "bold",
-        px: 3,
-        py: 1,
-        boxShadow: "0px 4px 10px rgba(0,0,0,0.15)",
-        "&:hover": {
-          backgroundColor: "primary.dark",
-          boxShadow: "0px 6px 14px rgba(0,0,0,0.2)",
-        },
-      }}
-    >
-      Edit
-    </Button>
+    <>
+      <Button
+        sx={{
+          float: "left",
+          outline: "none",
+          border: "none",
+          boxShadow: "none",
+          "&:focus": {
+            outline: "none",
+            border: "none",
+            boxShadow: "none",
+          },
+          "&:active": {
+            outline: "none",
+            border: "none",
+            boxShadow: "none",
+          },
+        }}
+        variant="contained"
+        color="primary"
+        startIcon={<EditIcon />}
+        onClick={handleClick}
+      >
+        Edit
+      </Button>
+
+      
+      <EditForm
+        showForm={showForm}
+        onClose={() => setShowForm(false)}   
+        product={product}                   
+        onSave={(updatedData) => {
+          console.log("Saved changes:", updatedData);
+          setShowForm(false); 
+        }}
+      />
+    </>
   );
 }
 

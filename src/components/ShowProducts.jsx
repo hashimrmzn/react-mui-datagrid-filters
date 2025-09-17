@@ -144,47 +144,48 @@ function ShowProducts() {
           </div>
         ) : (
           <>
-            <div>
+            <Box height={"40px"} py={2} px={1}>
               {isAuthenticated && selectedRows.length > 0 && (
-                <Box mb={2}>
-                  <EditButton />
-                </Box>
+                <Box >
+              <EditButton />
+            </Box>
               )}
-            </div>
-            <DataGrid
-              className="data-table"
-              rows={products}
-              columns={columns}
-              pageSize={5}
-              getRowId={(row) => row.id}
-              disableColumnSorting
-              disableColumnMenu
-              checkboxSelection={isAuthenticated}
-              onRowSelectionModelChange={(newSelection) => {
-                const idsArray = Array.from(newSelection.ids);
-                setSelectedRows(idsArray);
-              }}
-              sx={{
-                minHeight: "400px !important",
-                width: "100%",
-                maxHeight: "400px !important",
-                "& .MuiDataGrid-columnHeaders": {
-                  color: "#000",
-                  fontSize: 16,
-                  height: "45px",
-                },
-                "& .MuiDataGrid-columnHeaderTitle": {
-                  fontWeight: "bold",
-                  fontSize: "16px",
-                },
-                "& .MuiDataGrid-row:hover": {
-                  backgroundColor: "#f3f1f1ff",
-                },
-              }}
-            />
-          </>
+          </Box>
+        <DataGrid
+          className="data-table"
+          rows={products}
+          columns={columns}
+          pageSize={5}
+          getRowId={(row) => row.id}
+          disableColumnSorting
+          disableColumnMenu
+          checkboxSelection={isAuthenticated}
+          onRowSelectionModelChange={(newSelection) => {
+            const idsArray = Array.from(newSelection.ids);
+            setSelectedRows(idsArray);
+            
+          }}
+          sx={{
+            minHeight: "400px !important",
+            width: "100%",
+            maxHeight: "400px !important",
+            "& .MuiDataGrid-columnHeaders": {
+              color: "#000",
+              fontSize: 16,
+              height: "45px",
+            },
+            "& .MuiDataGrid-columnHeaderTitle": {
+              fontWeight: "bold",
+              fontSize: "16px",
+            },
+            "& .MuiDataGrid-row:hover": {
+              backgroundColor: "#f3f1f1ff",
+            },
+          }}
+        />
+      </>
         )}
-      </Paper>
+    </Paper >
     </>
   );
 }

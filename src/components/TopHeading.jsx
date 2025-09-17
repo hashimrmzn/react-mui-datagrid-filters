@@ -8,7 +8,7 @@ function TopHeading() {
                 <Typography
                 variant='h3'
                 color='#000'
-                mb={5}
+                mb={1}
                 mt={3}
                 fontSize="24px"
                 >
