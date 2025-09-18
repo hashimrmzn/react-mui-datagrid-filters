@@ -10,7 +10,7 @@ import {
 } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 
-function EditForm({ showForm, onClose,  onSave }) {
+function EditForm({ showForm, onClose,  onSave,product }) {
   const [formData, setFormData] = useState({
     title: "",
     price: "",
@@ -18,7 +18,7 @@ function EditForm({ showForm, onClose,  onSave }) {
   });
   const [errors, setErrors] = useState({});
  
-
+console.log(`the selected product is ${product}`);
 
   const validate = (data) => {
     const e = {};
@@ -38,8 +38,17 @@ function EditForm({ showForm, onClose,  onSave }) {
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
+    console.log(value);
   };
-
+useEffect(() => {
+    if (product) {
+      setFormData({
+        title: product.title || "",
+        price: product.price || "",
+        description: product.description || "",
+      });
+    }
+  }, [product]);
   const handleSave = () => {
     const e = validate(formData);
     setErrors(e);
@@ -61,8 +70,8 @@ function EditForm({ showForm, onClose,  onSave }) {
       onClose={onClose}
       PaperProps={{
         sx: {
-          width: { xs: "100%", sm: 520 },
-          maxWidth: 520,
+          width: { xs: "100%", sm: 400 },
+          maxWidth: 400,
           height: "100vh",
           display: "flex",
           flexDirection: "column",
@@ -71,11 +80,9 @@ function EditForm({ showForm, onClose,  onSave }) {
       }}
       ModalProps={{
         keepMounted: true,
-        disableEnforceFocus: true,
-        disableAutoFocus: true, // ✅ FIXED: allows typing
       }}
     >
-      {/* Top bar with close icon */}
+      
       <Box
         sx={{
           px: { xs: 2, sm: 3 },
@@ -110,7 +117,7 @@ function EditForm({ showForm, onClose,  onSave }) {
         </IconButton>
       </Box>
 
-      {/* Form content */}
+     
       <Box
         component="div"
         sx={{
@@ -164,7 +171,7 @@ function EditForm({ showForm, onClose,  onSave }) {
           variant="outlined"
           size="medium"
           inputProps={{ "aria-label": "product description" }}
-          helperText="Optional — include features, materials, or specifics"
+          
         />
       </Box>
 

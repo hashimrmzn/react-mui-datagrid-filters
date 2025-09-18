@@ -3,7 +3,7 @@ import { Button } from "@mui/material";
 import EditIcon from "@mui/icons-material/Edit";
 import EditForm from "../EditForm/EditForm";
 
-function EditButton() {
+function EditButton({product}) {
   const [showForm, setShowForm] = useState(false);
 
   const handleClick = () => {
@@ -41,7 +41,7 @@ function EditButton() {
       <EditForm
         showForm={showForm}
         onClose={() => setShowForm(false)}   
-                         
+        product={product}       
         onSave={(updatedData) => {
           console.log("Saved changes:", updatedData);
           setShowForm(false); 
