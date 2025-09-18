@@ -121,8 +121,7 @@ function ShowProducts() {
       ? products.find((p) => p.id === selectionModel[0])
       : null;
 
-  console.log("Selected IDs:", selectionModel);
-  console.log("Selected product:", selectedProduct);
+
 
   return (
     <>
@@ -175,16 +174,15 @@ function ShowProducts() {
               onRowSelectionModelChange={(newSelection) => {
                 const idsArray = Array.from(newSelection.ids);
                  setSelectionModel(idsArray); 
-                 console.log(newSelection)
               }}
               pageSizeOptions={[5]}
               initialState={{
                 pagination: { paginationModel: { pageSize: 5, page: 0 } },
               }}
               sx={{
-                minHeight: "400px !important",
+                minHeight: "365px !important",
                 width: "100%",
-                maxHeight: "400px !important",
+                maxHeight: "365px !important",
                 "& .MuiDataGrid-columnHeaders": {
                   color: "#000",
                   fontSize: 16,

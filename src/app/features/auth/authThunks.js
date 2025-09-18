@@ -14,3 +14,5 @@ export const UpdateProduct = createAsyncThunk(
     return await updateProduct(id, updates);
   }
 );
+
+

@@ -18,7 +18,7 @@ function EditForm({ showForm, onClose,  onSave,product }) {
   });
   const [errors, setErrors] = useState({});
  
-console.log(`the selected product is ${product}`);
+
 
   const validate = (data) => {
     const e = {};
@@ -42,11 +42,7 @@ console.log(`the selected product is ${product}`);
   };
 useEffect(() => {
     if (product) {
-      setFormData({
-        title: product.title || "",
-        price: product.price || "",
-        description: product.description || "",
-      });
+      setFormData(product);
     }
   }, [product]);
   const handleSave = () => {
@@ -61,6 +57,7 @@ useEffect(() => {
       }
       if (onClose) onClose();
     }
+
   };
 
   return (
@@ -175,7 +172,7 @@ useEffect(() => {
         />
       </Box>
 
-      {/* Bottom action bar */}
+    
       <Box
         sx={{
           px: { xs: 2, sm: 3 },
